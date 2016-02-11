@@ -51,7 +51,7 @@
 				</dict>
 				<dict>
 					<key>begin</key>
-					<string>/\*\*(?!/)</string>
+					<string>/\*(\*|\!)(?!/)</string>
 					<key>captures</key>
 					<dict>
 						<key>0</key>
@@ -64,6 +64,15 @@
 					<string>\*/</string>
 					<key>name</key>
 					<string>comment.block.documentation.js</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>match</key>
+							<string>(@\w*)</string>
+							<key>name</key>
+							<string>storage.type.annotation.js</string>
+						</dict>
+					</array>
 				</dict>
 				<dict>
 					<key>begin</key>

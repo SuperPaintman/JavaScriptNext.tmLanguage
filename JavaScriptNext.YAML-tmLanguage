@@ -98,10 +98,13 @@ repository:
     - include: '#special-comments-conditional-compilation'
 
     - name: comment.block.documentation.js
-      begin: /\*\*(?!/)
+      begin: /\*(\*|\!)(?!/)
       end: \*/
       captures:
         '0': {name: punctuation.definition.comment.js}
+      patterns:
+      - match: (@\w*)
+        name: storage.type.annotation.js
 
     - name: comment.block.js
       begin: /\*
