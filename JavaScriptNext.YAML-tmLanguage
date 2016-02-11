@@ -276,8 +276,7 @@ repository:
   literal-function:
     patterns:
     # e.g. function play(arg1, arg2) {  }
-    - name: meta.function.js
-      begin: >-
+    - begin: >-
         (?x)
           (?:\b(async)\s+)?
           \s*(function)(?:\s*(\*)|(?=\s|[(]))
@@ -292,8 +291,7 @@ repository:
       - include: '#function-declaration-parameters'
 
     # e.g. play = function(arg1, arg2) {  }
-    - name: meta.function.js
-      begin: >-
+    - begin: >-
         (?x)
           (\b[_$a-zA-Z][$\w]*)
           \s*=
@@ -311,8 +309,7 @@ repository:
       - include: '#function-declaration-parameters'
 
     # e.g. Sound.prototype.play = function(arg1, arg2) {  }
-    - name: meta.prototype.function.js
-      begin: >-
+    - begin: >-
         (?x)
           (\b_?[A-Z][$\w]*)?
           (\.)(prototype)
@@ -336,8 +333,7 @@ repository:
       - include: '#function-declaration-parameters'
 
     # e.g. Sound.play = function(arg1, arg2) {  }
-    - name: meta.function.static.js
-      begin: >-
+    - begin: >-
         (?x)
           (\b_?[A-Z][$\w]*)?
           (\.)([_$a-zA-Z][$\w]*)
