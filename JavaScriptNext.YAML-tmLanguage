@@ -968,15 +968,13 @@ repository:
     - name: string.template-string.html.js
       begin: >-
         (?x)
-          ([a-zA-Z$_][\w$_]*)?
-          \s*
           (\/\*\s*(html|ng-?template)\s*\*\/)
           \s*
-          (`)
+          ([a-zA-Z$_][\w$_]*)?(`)
       beginCaptures:
-        '1': {name: entity.template-string.tag.name.js}
-        '2': {name: comment.block.documentation.js}
-        '3': {name: storage.type.annotation.js}
+        '1': {name: comment.block.documentation.js}
+        '2': {name: storage.type.annotation.js}
+        '3': {name: entity.template-string.tag.name.js}
         '4': {name: punctuation.definition.template-string.begin.js}
       end: '`'
       endCaptures:
