@@ -964,6 +964,36 @@ repository:
 
   literal-template-string:
     patterns:
+    # Html content
+    - name: string.template-string.html.js
+      begin: >-
+        (?x)
+          ([a-zA-Z$_][\w$_]*)?
+          \s*
+          (\/\*\s*(html|ng-?template)\s*\*\/)
+          \s*
+          (`)
+      beginCaptures:
+        '1': {name: entity.template-string.tag.name.js}
+        '2': {name: comment.block.documentation.js}
+        '3': {name: storage.type.annotation.js}
+        '4': {name: punctuation.definition.template-string.begin.js}
+      end: '`'
+      endCaptures:
+        '0': {name: punctuation.definition.template-string.end.js}
+      patterns:
+      - include: '#string-content'
+      - name: entity.template-string.element.js
+        begin: \${
+        beginCaptures:
+          '0': {name: punctuation.template-string.element.begin.js}
+        end: '}'
+        endCaptures:
+          '0': {name: punctuation.template-string.element.end.js}
+        patterns:
+        - include: '#expression'
+      - include: 'text.html.basic'
+    # Vanilla
     - name: string.template-string.js
       begin: ([a-zA-Z$_][\w$_]*)?(`)
       beginCaptures:
