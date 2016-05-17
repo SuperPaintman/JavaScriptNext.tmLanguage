@@ -991,6 +991,33 @@ repository:
         patterns:
         - include: '#expression'
       - include: 'text.html.basic'
+    # jade content
+    - name: string.template-string.jade.js
+      begin: >-
+        (?x)
+          (\/\*\s*(jade)\s*\*\/)
+          \s*
+          ([a-zA-Z$_][\w$_]*)?(`)
+      beginCaptures:
+        '1': {name: comment.block.documentation.js}
+        '2': {name: storage.type.annotation.js}
+        '3': {name: entity.template-string.tag.name.js}
+        '4': {name: punctuation.definition.template-string.begin.js}
+      end: '`'
+      endCaptures:
+        '0': {name: punctuation.definition.template-string.end.js}
+      patterns:
+      - include: '#string-content'
+      - name: entity.template-string.element.js
+        begin: \${
+        beginCaptures:
+          '0': {name: punctuation.template-string.element.begin.js}
+        end: '}'
+        endCaptures:
+          '0': {name: punctuation.template-string.element.end.js}
+        patterns:
+        - include: '#expression'
+      - include: 'text.jade'
     # YAML content
     - name: string.template-string.yaml.js
       begin: >-
